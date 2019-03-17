@@ -47,13 +47,16 @@ spring:
   devtools:
     restart:
       enabled: true
-
+    remote:
+      restart:
+        enabled: true
 
 
 #mybatis
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath:mappers/mapper/*
 
 
@@ -64,3 +67,4 @@ logging:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
