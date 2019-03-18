@@ -1,4 +1,4 @@
-package com.jc.jc_backer.basic;
+package com.jc.jc_backer.common.basic;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -1,4 +1,4 @@
-//核心配置
+/*//核心配置
 Do.setConfig('coreLib',[basedir+'jquery.js']);
 //base
 Do.add('base',{path:basedir+'base/page.js',requires:['icofont']});
@@ -63,6 +63,5 @@ Do.add('tip',{path:basedir+'tip/powerFloat.js',requires:['tip_css']});
 Do.add('tree',{path:basedir+'tree/ztree.js'});
 
 //swfobject
-Do.add('swfobject',{path:basedir+'upload/swfobject.js'});
-
+Do.add('swfobject',{path:basedir+'upload/swfobject.js'});*/
 

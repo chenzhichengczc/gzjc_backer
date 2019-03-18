@@ -10,4 +10,8 @@ import com.jc.jc_backer.modules.admin.entity.Admin;
 public interface AdminService{
 
     boolean registerAdmin(Admin admin);
+
+    Admin findByName(String name);
+
+    Admin loginAdmin(Admin admin);
 }

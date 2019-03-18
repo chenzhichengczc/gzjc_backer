@@ -1,4 +1,4 @@
-package com.jc.jc_backer.aop;
+package com.jc.jc_backer.common.aop;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;

@@ -2,9 +2,13 @@ package com.jc.jc_backer.config;
 
 import com.jc.jc_backer.realm.AdminShiroRealm;
 import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -18,14 +22,9 @@ import java.util.Map;
  * 初始化Shiro
  */
 @Configuration
-public class ShiroConfig {
+public class ShiroConfig implements ApplicationContextAware {
 
-    //将验证方式注入Shiro容器
-    @Bean
-    public AdminShiroRealm ShiroConfig(){
-        AdminShiroRealm realm = new AdminShiroRealm();
-        return realm;
-    }
+
 
     //权限管理,配置主要是Realm的权限认证
     @Bean
@@ -35,28 +34,43 @@ public class ShiroConfig {
         return  securityManager;
     }
 
+
+
     //ShiroFilter工厂,设置对应过滤跳转
     @Bean
     public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager){
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         Map<String,String> map = new HashMap<String, String>();
-        //登出
+
+        map.put("/admin/registeAdmin","anon");
+        map.put("/admin/loginAdmin","anon");
+
+        //登出 TODO
         map.put("/logout","logout");
 
         //释放静态资源
         map.put("/static/**","anon");
 
         //对所有用户认证
-        //map.put("/**","authc");
+        map.put("/**","authc");
         //登录
         shiroFilterFactoryBean.setLoginUrl("/page/index");
-        //首页
+
         shiroFilterFactoryBean.setSuccessUrl("/page/admin-index");
         //错误页面，认证不通过跳转
         /*shiroFilterFactoryBean.setUnauthorizedUrl("/page/ad");*/
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         return shiroFilterFactoryBean;
+    }
+
+
+
+    //将验证方式注入Shiro容器
+    @Bean
+    public AdminShiroRealm ShiroConfig(){
+        AdminShiroRealm realm = new AdminShiroRealm();
+        return realm;
     }
 
     //加入注解使用
@@ -67,4 +81,13 @@ public class ShiroConfig {
         return authorizationAttributeSourceAdvisor;
     }
 
+    /**
+     * 解决Shiro自定义Realm无法进行注入问题
+     */
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        Realm bean = applicationContext.getBean(AdminShiroRealm.class);
+        DefaultWebSecurityManager defaultWebSecurityManager = (DefaultWebSecurityManager)applicationContext.getBean(SecurityManager.class);
+        defaultWebSecurityManager.setRealm(bean);
+    }
 }

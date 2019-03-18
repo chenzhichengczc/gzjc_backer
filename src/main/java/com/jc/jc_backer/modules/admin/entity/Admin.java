@@ -1,13 +1,14 @@
 package com.jc.jc_backer.modules.admin.entity;
 
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
-import com.jc.jc_backer.basic.BasicEntity;
+import com.jc.jc_backer.common.basic.BasicEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import javax.validation.constraints.NotBlank;
 
 /**
  * @Author: Charles Chan
@@ -26,10 +27,12 @@ public class Admin extends BasicEntity {
 
     //用户名
     @ApiModelProperty(value = "用户名",name = "username")
+    @NotBlank(message = "用户名不能为空")
     private  String username;
 
     //密码
     @ApiModelProperty(value = "密码",name = "password")
+    @NotBlank(message = "密码不能为空")
     private  String password;
 
     //盐值

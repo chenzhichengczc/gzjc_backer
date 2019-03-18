@@ -1,7 +1,6 @@
-package com.jc.jc_backer.basic;
+package com.jc.jc_backer.common.basic;
 
 import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.enums.FieldFill;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
