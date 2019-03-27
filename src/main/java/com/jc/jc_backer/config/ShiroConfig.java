@@ -1,11 +1,13 @@
 package com.jc.jc_backer.config;
 
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import com.jc.jc_backer.realm.AdminShiroRealm;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -34,7 +36,12 @@ public class ShiroConfig implements ApplicationContextAware {
         return  securityManager;
     }
 
-
+    @Bean
+    public DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator(){
+        DefaultAdvisorAutoProxyCreator creator = new DefaultAdvisorAutoProxyCreator();
+        creator.setProxyTargetClass(true);
+        return creator;
+    }
 
     //ShiroFilter工厂,设置对应过滤跳转
     @Bean
@@ -45,6 +52,8 @@ public class ShiroConfig implements ApplicationContextAware {
 
         map.put("/admin/registeAdmin","anon");
         map.put("/admin/loginAdmin","anon");
+
+        map.put("/page/register","anon");
 
         //登出 TODO
         map.put("/logout","logout");
@@ -71,6 +80,12 @@ public class ShiroConfig implements ApplicationContextAware {
     public AdminShiroRealm ShiroConfig(){
         AdminShiroRealm realm = new AdminShiroRealm();
         return realm;
+    }
+
+    //配置html标签
+    @Bean
+    public ShiroDialect shiroDialect() {
+        return new ShiroDialect();
     }
 
     //加入注解使用

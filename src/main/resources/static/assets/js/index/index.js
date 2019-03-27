@@ -11,6 +11,9 @@ function notNull(value) {
 
 $(function () {
 
+    //全局加载页面
+    loadPage()
+
     $(".button").click(function () {
         if(notNull($("#username").val()) && notNull($("#password").val())){
             var data = {"username":$("#username").val(),"password":$("#password").val()}
@@ -30,3 +33,14 @@ $(function () {
     })
 })
 
+
+//加载index首页页面
+function loadPage() {
+    //加载流量分析
+    loadStaticVisit();
+    
+}
+
+function loadStaticVisit() {
+
+}

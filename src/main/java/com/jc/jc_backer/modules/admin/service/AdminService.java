@@ -2,6 +2,8 @@ package com.jc.jc_backer.modules.admin.service;
 
 import com.jc.jc_backer.modules.admin.entity.Admin;
 
+import java.util.Set;
+
 /**
  * @Author: Charles Chan
  * @Date: 2019/3/17 14:15
@@ -9,9 +11,13 @@ import com.jc.jc_backer.modules.admin.entity.Admin;
  */
 public interface AdminService{
 
-    boolean registerAdmin(Admin admin);
+    public boolean registerAdmin(Admin admin);
 
-    Admin findByName(String name);
+    public Admin findByName(String name);
 
-    Admin loginAdmin(Admin admin);
+    public Admin loginAdmin(Admin admin);
+
+    Set<String> findRoles(String username);
+
+    Set<String> findPermission(String username);
 }

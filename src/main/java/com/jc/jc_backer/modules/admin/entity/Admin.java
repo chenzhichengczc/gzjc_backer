@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 /**
  * @Author: Charles Chan
@@ -16,7 +17,7 @@ import javax.validation.constraints.NotBlank;
  * @Version 1.0
  */
 @Data
-@TableName("jc_sys_admin")
+@TableName("jc_sys_user")
 @ApiModel("用户主体表")
 public class Admin extends BasicEntity {
 
@@ -24,6 +25,11 @@ public class Admin extends BasicEntity {
     @ApiModelProperty(value = "自增ID",name = "id")
     @TableId(type = IdType.AUTO)
     private  long id;
+
+    //组织ID
+    @ApiModelProperty(value = "组织ID",name = "organizationId")
+    @TableId(type = IdType.AUTO)
+    private  long organizationId = 1;
 
     //用户名
     @ApiModelProperty(value = "用户名",name = "username")
@@ -40,12 +46,12 @@ public class Admin extends BasicEntity {
     private  String salt;
 
     //角色列表
-    @ApiModelProperty(value = "角色列表",name = "roleId")
-    private  String roleId;
+    @ApiModelProperty(value = "角色列表",name = "roleIds")
+    private String roleIds;
 
-    //是否锁定 0 不锁定 1锁定
+    //是否锁定 1 不锁定 0锁定
     @ApiModelProperty(value = "是否锁定",name = "locked")
-    private  int locked = 0;
+    private  int locked = 1;
 
 
 }
