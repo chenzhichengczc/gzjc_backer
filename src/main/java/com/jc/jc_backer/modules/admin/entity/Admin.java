@@ -9,7 +9,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
-import java.util.List;
 
 /**
  * @Author: Charles Chan
@@ -53,5 +52,32 @@ public class Admin extends BasicEntity {
     @ApiModelProperty(value = "是否锁定",name = "locked")
     private  int locked = 1;
 
+    //姓名
+    @ApiModelProperty(value = "姓名",name = "name")
+    private  String name ;
+
+    //邮箱
+    @ApiModelProperty(value = "邮箱",name = "email")
+    private  String email ;
+
+    //电话
+    @ApiModelProperty(value = "电话",name = "telephone")
+    private  String telephone ;
+
+    //QQ
+    @ApiModelProperty(value = "QQ",name = "qq")
+    private  String qq ;
+
+    //权限--(0-管理员,1-vip员工,2-普通员工)
+    @ApiModelProperty(value = "权限",name = "authority")
+    private  Integer authority;
+
+    //简介
+    @ApiModelProperty(value = "简介",name = "intro")
+    private String intro;
+
+    //头像
+    @ApiModelProperty(value = "头像",name = "headPortrait")
+    private  String headPortrait ;
 
 }

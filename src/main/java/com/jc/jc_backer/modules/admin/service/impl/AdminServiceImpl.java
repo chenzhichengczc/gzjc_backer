@@ -68,9 +68,67 @@ public class AdminServiceImpl implements AdminService {
     }
 
     /**
-     * 根据用户名找到对应的用户信息
-     * @param name
+     * 修改个人资料
+     * @param admin
      * @return
+     */
+    @Override
+    public Integer updateAdmin(Admin admin){
+        if(admin.getLocked()==0){
+            throw new JcException("该用户被锁定##请联系管理员！");
+        }
+        if (!admin.getUsername().equals(adminMapper.selectById(admin.getId()).getUsername())){
+            throw new JcException("修改失败！您尝试访问的用户不存在！");
+        }
+        Integer rows=updateById(admin);
+
+        return rows;
+    }
+
+    /**
+     * 修改头像
+     * @param id 根据id查询用户
+     * @param avatar 根据头像地址存储
+     */
+    @Override
+    public void changeAvatar(Long id,String avatar){
+        Admin admin=adminMapper.selectById(id);
+        admin.setHeadPortrait(avatar);
+        updateById(admin);
+    }
+
+    /**
+     * 根据id查询用户信息
+     * @param id
+     * @return
+     */
+    @Override
+    public Admin findByAdmin(Long id){
+        Admin admin=adminMapper.selectById(id);
+        admin.setLocked(-1);
+        admin.setSalt("");
+        admin.setPassword("");
+        admin.setId(-1);
+        return admin;
+    }
+
+    /**
+     * 根据用户实体类的ID修改当前用户信息
+     * @param admin 用户实体类
+     * @return 受影响的行数
+     */
+    private Integer updateById(Admin admin){
+        Integer rows=adminMapper.updateById(admin);
+        if(rows!=1){
+            throw new JcException("修改失败！出现未知错误##请联系管理员！");
+        }
+        return rows;
+    }
+
+    /**
+     * 根据用户名找到对应的用户信息
+     * @param name 用户名
+     * @return 用户信息
      */
     @Override
     public Admin findByName(String name) {

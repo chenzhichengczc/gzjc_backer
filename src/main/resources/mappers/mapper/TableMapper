@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jc.jc_backer.modules.table.mapper.TableMapper">
+
+    <select id="selectByAudits" resultType="com.jc.jc_backer.modules.table.entity.Table">
+        SELECT *
+        FROM jc_sys_table
+        WHERE audit=0 OR audit=2
+    </select>
+
+    <select id="selectByAudit" resultType="com.jc.jc_backer.modules.table.entity.Table">
+        SELECT *
+        FROM jc_sys_table
+        WHERE audit=1
+    </select>
+
+    <select id="selectByCategory" resultType="com.jc.jc_backer.modules.table.entity.Table">
+        SELECT *
+        FROM jc_sys_table
+        WHERE category=#{category}
+    </select>
+
+</mapper>

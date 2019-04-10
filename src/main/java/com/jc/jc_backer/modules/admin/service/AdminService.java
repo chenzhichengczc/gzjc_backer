@@ -17,6 +17,12 @@ public interface AdminService{
 
     public Admin loginAdmin(Admin admin);
 
+    public Integer updateAdmin(Admin admin);
+
+    public Admin findByAdmin(Long id);
+
+    public void changeAvatar(Long id,String avatar);
+
     Set<String> findRoles(String username);
 
     Set<String> findPermission(String username);

@@ -29,7 +29,7 @@
   <!--<![endif]-->
   <script src="../static/assets/js/app.js"></script>
 
-  <script src="../static/assets/js/admin_index/adminIndex.js"></script>
+
 
 
 </head>
@@ -258,12 +258,36 @@
         </div>
       </div>
 
+      <div id="sjw-rw-1" class="sjw-rw-1">
+        <div>
+          <form id="sjw-form-task">
+            <div>
+              <label class="sjw-lb-1">标题：</label>
+              <input name="title" type="text" class="sjw-bt-1">
+            </div>
+            <div>
+              <label class="sjw-lb-1">内容：</label>
+              <textarea name="content" class="sjw-nr-1"></textarea>
+            </div>
+          </form>
+          <div class="sjw-rw-2">
+            <button id="sjw-bt-tj" type="button" class="am-btn am-btn-default am-radius">提交任务</button>
+            <button id="sjw-bt-qx" type="button" class="am-btn am-btn-default am-radius">取消</button>
+          </div>
+        </div>
+      </div>
+
       <div class="am-u-md-6">
         <div class="am-panel am-panel-default">
           <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-4'}">任务 task<span class="am-icon-chevron-down am-fr" ></span></div>
-          <div id="collapse-panel-4" class="am-panel-bd am-collapse am-in">
-            <ul class="am-list admin-content-task">
-              <li>
+          <div id="collapse-panel-4" class="am-panel-bd am-collapse am-in sjw-task-div">
+            <ul id="sjw-task-ul" class="am-list admin-content-task">
+              <li class="sjw-task">
+                <div class="sjw-task">
+                <button id="sjw-bt-task" type="button" class="am-btn am-btn-default am-round am-fr">添加任务</button>
+                </div>
+              </li>
+              <!--<li>
                 <div class="admin-task-meta"> Posted on 25/1/2120 by John Clark</div>
                 <div class="admin-task-bd">
                   The starting place for exploring business management; helping new managers get started and experienced managers get better.
@@ -298,7 +322,7 @@
                     <button type="button" class="am-btn am-btn-default am-btn-xs">删除</button>
                   </div>
                 </div>
-              </li>
+              </li>-->
             </ul>
           </div>
         </div>
@@ -359,6 +383,6 @@
   <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
 </footer>
 
-
+<script src="../static/assets/js/admin_index/adminIndex.js"></script>
 </body>
 </html>

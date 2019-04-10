@@ -244,3 +244,54 @@ gallery.html css
   width: 200px;
   margin: 0 auto;
 }
+
+.sjw-rw-1{
+  display: none;
+  position: fixed;
+  left: 35%;
+  top: 10%;
+  border:3px solid;
+  border-color: #aaaaaa;
+  background-color: #c7c7c7;
+  width: 400px;
+  height: 500px;
+  padding: 20px;
+  overflow:hidden;
+  z-index: 10;
+}
+
+.sjw-task{
+  overflow:hidden;
+}
+
+.sjw-bt-1{
+  width: 350px;
+}
+.sjw-nr-1{
+  width: 350px;
+  height: 300px;
+}
+
+.sjw-rw-2{
+  margin-left: 50px;
+  margin-top: 20px;
+}
+
+.sjw-rw-2 button{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.sjw-lb-1{
+  display: block;
+}
+
+.sjw-task-div{
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.sjw-h5{
+  font-size: 25px;
+  text-align: center;
+}
