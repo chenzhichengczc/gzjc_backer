@@ -173,31 +173,78 @@ function loadUpdate() {
 function loadAudit() {
     var audit = 3;
     var category=1;
+    var pageNum = 1;
     $("#audit-0").click(function () {
         audit = 0;
-        loadSelectAll(audit,category,1);
+        loadSelectAll(audit,category,pageNum);
     });
     $("#audit-1").click(function () {
         audit = 1;
-        loadSelectAll(audit,category,1);
+        loadSelectAll(audit,category,pageNum);
     });
     $("#sjw-category").change(function () {
         category=$("#sjw-category").val();
-        loadSelectAll(audit,category,1);
+        loadSelectAll(audit,category,pageNum);
+    });
+    $("#sjw-fy-a0").click(function () {
+        if(pageNum<=1){return ;}
+        if(pageNum>1 && pageNum<=5){
+            pageNum--;
+            console.log("if-4:"+pageNum);
+        }
+        if(pageNum>5){
+            $("#sjw-fy-a1").html(pageNum-5);
+            $("#sjw-fy-a2").html(pageNum-4);
+            $("#sjw-fy-a3").html(pageNum-3);
+            $("#sjw-fy-a4").html(pageNum-2);
+            $("#sjw-fy-a5").html(pageNum-1);
+            pageNum--;
+            console.log("if-5:"+pageNum);
+        }
+        $("#sjw-fy").html(pageNum);
+        loadSelectAll(audit,category,pageNum);
     });
     $("#sjw-fy-a1").click(function () {
-        loadSelectAll(audit,category,1);
+        pageNum = $("#sjw-fy-a1").html();
+        $("#sjw-fy").html(pageNum);
+        loadSelectAll(audit,category,pageNum);
     });
     $("#sjw-fy-a2").click(function () {
-        loadSelectAll(audit,category,2);
+        pageNum = $("#sjw-fy-a2").html();
+        $("#sjw-fy").html(pageNum);
+        loadSelectAll(audit,category,pageNum);
     });
     $("#sjw-fy-a3").click(function () {
-        loadSelectAll(audit,category,3);
+        pageNum = $("#sjw-fy-a3").html();
+        $("#sjw-fy").html(pageNum);
+        loadSelectAll(audit,category,pageNum);
     });
     $("#sjw-fy-a4").click(function () {
-        loadSelectAll(audit,category,4);
+        pageNum = $("#sjw-fy-a4").html();
+        $("#sjw-fy").html(pageNum);
+        loadSelectAll(audit,category,pageNum);
     });
     $("#sjw-fy-a5").click(function () {
-        loadSelectAll(audit,category,5);
+        pageNum = $("#sjw-fy-a5").html();
+        $("#sjw-fy").html(pageNum);
+        loadSelectAll(audit,category,pageNum);
+    });
+    $("#sjw-fy-a6").click(function () {
+        if(pageNum>=1 && pageNum<=4){
+            pageNum++;
+            console.log("if-1:"+pageNum);
+        }
+        if(pageNum>=5){
+            $("#sjw-fy-a1").html(pageNum-3);
+            $("#sjw-fy-a2").html(pageNum-2);
+            $("#sjw-fy-a3").html(pageNum-1);
+            $("#sjw-fy-a4").html(pageNum);
+            $("#sjw-fy-a5").html(pageNum+1);
+            pageNum++;
+            console.log("if-2:"+pageNum);
+        }
+        $("#sjw-fy").html(pageNum);
+        console.log("if-3:"+pageNum);
+        loadSelectAll(audit,category,pageNum);
     });
 }

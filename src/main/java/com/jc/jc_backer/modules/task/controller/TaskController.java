@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -18,11 +19,11 @@ public class TaskController {
     private TaskService taskService;
 
     @PostMapping("/newTask")
-    public ResponseUtil newTask(HttpSession session,String content,String title){
+    public ResponseUtil newTask(HttpSession session,String content,String title,String executor,Integer level){
         Admin admin=(Admin) session.getAttribute("admin");
         Long uid=admin.getId();
         String name=admin.getName();
-        taskService.newTask(uid,name,content,title);
+        taskService.newTask(uid,name,content,title,executor,level);
         return ResponseUtil.success("添加成功！");
     }
 
@@ -32,12 +33,41 @@ public class TaskController {
         return ResponseUtil.success(tasklist);
     }
 
+    @GetMapping("/findAdmin")
+    public ResponseUtil findAdmin(){
+        List<Admin> adminList = taskService.findAdmin();
+        return ResponseUtil.success(adminList);
+    }
+
+    @GetMapping("/findById")
+    public ResponseUtil findById(@RequestParam("tid") Long tid){
+        Task task=taskService.findById(tid);
+        return ResponseUtil.success(task);
+    }
+
     @GetMapping("/removeTask")
     public ResponseUtil removeTask(@RequestParam("tid") Long tid, HttpSession session){
         Admin admin = (Admin) session.getAttribute("admin");
         String name = admin.getName();
         taskService.removeByTid(tid,name);
         return ResponseUtil.success("删除成功!");
+    }
+
+    @PostMapping("/updateByTask")
+    public ResponseUtil updateByTask(Task task){
+        taskService.updateByTask(task);
+        return ResponseUtil.success("修改成功!") ;
+    }
+
+    @GetMapping("/selectTaskMap")
+    public ResponseUtil selectTaskMap(HttpSession session,String time,String content){
+        Admin admin = (Admin)session.getAttribute("admin");
+        HashMap<String,Object> hashMap =new HashMap<>();
+        hashMap.put("email",admin.getEmail());
+        hashMap.put("time",time);
+        hashMap.put("content",content);
+        List<Task> tasks=taskService.selectTaskMap(hashMap);
+        return ResponseUtil.success(tasks);
     }
 
 }

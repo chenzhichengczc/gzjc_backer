@@ -269,6 +269,18 @@
               <label class="sjw-lb-1">内容：</label>
               <textarea name="content" class="sjw-nr-1"></textarea>
             </div>
+            <div>
+              <label class="sjw-lb-1 sjw-lb-level">重要级别：</label>
+              <select name="level" class="sjw-select-level">
+                <option value="0">请选择</option>
+                <option value="1">重要</option>
+                <option value="2">中等</option>
+                <option value="3">还行</option>
+              </select>
+              <label class="sjw-lb-1 sjw-lb-level">执行人：</label>
+              <select id="sjw-executor" name="executor" class="sjw-select-executor">
+              </select>
+            </div>
           </form>
           <div class="sjw-rw-2">
             <button id="sjw-bt-tj" type="button" class="am-btn am-btn-default am-radius">提交任务</button>
@@ -277,15 +289,59 @@
         </div>
       </div>
 
-      <div class="am-u-md-6">
+      <div id="sjw-rw-2" class="sjw-rw-1">
+        <div>
+          <form id="sjw-form-task2">
+            <input class="sjw-disp" name="tid">
+            <div>
+              <label class="sjw-lb-1">标题：</label>
+              <input name="title" type="text" class="sjw-bt-1">
+            </div>
+            <div>
+              <label class="sjw-lb-1">内容：</label>
+              <textarea name="content" class="sjw-nr-1"></textarea>
+            </div>
+            <div>
+              <label class="sjw-lb-1 sjw-lb-level">重要级别：</label>
+              <select name="level" class="sjw-select-level">
+                <option value="0">请选择</option>
+                <option value="1">重要</option>
+                <option value="2">中等</option>
+                <option value="3">还行</option>
+              </select>
+              <label class="sjw-lb-1 sjw-lb-level">执行人：</label>
+              <select id="sjw-executor2" name="executor" class="sjw-select-executor">
+              </select>
+            </div>
+          </form>
+          <div class="sjw-rw-2">
+            <button id="sjw-bt-tj2" type="button" class="am-btn am-btn-default am-radius">修改</button>
+            <button id="sjw-bt-qx2" type="button" class="am-btn am-btn-default am-radius">取消</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="sjw-rw-head" class="am-u-md-6">
         <div class="am-panel am-panel-default">
           <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-4'}">任务 task<span class="am-icon-chevron-down am-fr" ></span></div>
           <div id="collapse-panel-4" class="am-panel-bd am-collapse am-in sjw-task-div">
             <ul id="sjw-task-ul" class="am-list admin-content-task">
               <li class="sjw-task">
                 <div class="sjw-task">
-                <button id="sjw-bt-task" type="button" class="am-btn am-btn-default am-round am-fr">添加任务</button>
+                    <button id="sjw-bt-task" type="button" class="am-btn am-btn-default am-round am-fr">添加任务</button>
                 </div>
+              </li>
+              <li class="sjw-task">
+                <div class="sjw-task">
+                  <input id="sjw-date-task" type="date" class="sjw-a-task"><input id="sjw-text-task" type="text" placeholder="请输入搜索内容" class="sjw-a-task"><a id="sjw-date-a" class="am-btn am-btn-default am-round sjw-a-task">确定</a>
+                </div>
+              </li>
+              <li class="sjw-task">
+                 <div class="sjw-task">
+                     <ul id="sjw-task-ul-ul" class="am-list admin-content-task">
+
+                     </ul>
+                 </div>
               </li>
               <!--<li>
                 <div class="admin-task-meta"> Posted on 25/1/2120 by John Clark</div>

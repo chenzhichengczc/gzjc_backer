@@ -269,7 +269,7 @@ gallery.html css
 }
 .sjw-nr-1{
   width: 350px;
-  height: 300px;
+  height: 250px;
 }
 
 .sjw-rw-2{
@@ -286,6 +286,10 @@ gallery.html css
   display: block;
 }
 
+.sjw-lb-level{
+  display: inline-block;
+}
+
 .sjw-task-div{
   height: 400px;
   overflow-y: scroll;
@@ -294,4 +298,55 @@ gallery.html css
 .sjw-h5{
   font-size: 25px;
   text-align: center;
+}
+
+.sjw-level-1{
+  width: 250px;
+  height: 20px;
+  background-color: #cb0000;
+  border-radius: 10px;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+.sjw-level-2{
+  width: 150px;
+  height: 20px;
+  background-color: #ffea00;
+  border-radius: 10px;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+.sjw-level-3{
+  width: 80px;
+  height: 20px;
+  background-color: #00de00;
+  border-radius: 10px;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+.sjw-disp{
+  display: none;
+}
+
+.sjw-complete-1{
+  display: none;
+}
+
+.sjw-complete-0{
+  display: inline-block;
+  font-size: 25px;
+  color: #8c00c8;
+}
+
+.sjw-ul-p{
+  text-align: center;
+  font-size: 12px;
+  color: #c0c0c0;
+}
+
+.sjw-a-task{
+  margin-right: 15px;
 }

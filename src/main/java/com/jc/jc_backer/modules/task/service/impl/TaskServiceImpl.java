@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class TaskServiceImpl implements TaskService {
@@ -31,7 +33,7 @@ public class TaskServiceImpl implements TaskService {
      * @param title 发布标题
      */
     @Override
-    public void newTask(Long uid, String name, String content, String title) {
+    public void newTask(Long uid, String name, String content, String title,String executor,Integer level) {
         //对一些可能出现的异常进行处理
         if(uid==null){throw new JcException("新增任务失败！尝试访问的用户ID不存在！");}
         if(name==null){throw new JcException("新增任务失败！尝试访问的用户名不存在！");}
@@ -43,7 +45,9 @@ public class TaskServiceImpl implements TaskService {
         task.setName(name);
         task.setContent(content);
         task.setTitle(title);
+        task.setExecutor(executor);
         task.setCreateBy(name);
+        task.setLevel(level);
         //执行添加到数据库
         insertByTask(task);
     }
@@ -71,6 +75,18 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    public List<Admin> findAdmin() {
+        Wrapper<Admin> wrapper=new Wrapper<Admin>() {
+            @Override
+            public String getSqlSegment() {
+                return null;
+            }
+        };
+        List<Admin> adminList=adminMapper.selectList(wrapper);
+        return adminList;
+    }
+
+    @Override
     public void removeByTid(Long tid,String name) {
         Task task=new Task();
         Date time = new Date();
@@ -79,6 +95,34 @@ public class TaskServiceImpl implements TaskService {
         task.setProUpdateBy(name);
         task.setProUpdateTime(time);
         taskMapper.updateById(task);
+    }
+
+    @Override
+    public void updateByTask(Task task) {
+        if(task.getRemove()==0){throw new JcException("修改任务失败！尝试访问的任务不存在！");}
+        Task task1=taskMapper.selectById(task.getTid());
+        task.setCreateTime(task1.getCreateTime());
+        task.setCreateBy(task1.getCreateBy());
+        updateById(task);
+    }
+
+    @Override
+    public Task findById(Long tid) {
+        Task task=taskMapper.selectById(tid);
+        return task;
+    }
+
+    @Override
+    public List<Task> selectTaskMap(HashMap<String, Object> hashMap) {
+        Map<String,Object> map= hashMap;
+        List<Task> tasks=taskMapper.selectTaskMap(map);
+        return tasks;
+    }
+
+    private Integer updateById(Task task){
+        Integer rows=taskMapper.updateById(task);
+        if (rows == 0) { throw new JcException("修改任务失败！出现未知错误请联系管理员！"); }
+        return rows;
     }
 
     /**
