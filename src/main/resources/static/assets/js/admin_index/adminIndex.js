@@ -131,9 +131,15 @@ function loadFindTask(){
                 var data=json.data;
                 for(var i=data.length-1;i>=0;i--){
                     var html='<li class="li-#{id}"><a name="#{createTime}"></a>'
-                        +'<div class="admin-task-meta">日期: #{createTime} 作者: #{createName} 标题: #{title} @#{executor}</div>'
+                        +'<div class="admin-task-meta">日期: #{createTime} 发布人: #{createName} @#{exename}</div>'
+                        +'<div class="admin-task-bd">'
+                        +'任务模块: #{title}'
+                        +'</div>'
                         +'<div class="admin-task-bd">'
                         +'#{content}'
+                        +'</div>'
+                        +'<div class="admin-task-bd">'
+                        +'---------------------------最后期限：#{deadline}'
                         +'</div>'
                         +'<div class="am-cf">'
                         +'<div class="am-btn-toolbar am-fl">'
@@ -158,8 +164,9 @@ function loadFindTask(){
                     html=html.replace("#{createTime}",data[i].createTime);
                     html=html.replace("#{createName}",data[i].createBy);
                     html=html.replace("#{title}",data[i].title);
-                    html=html.replace("#{executor}",data[i].executor);
+                    html=html.replace("#{exename}",data[i].exename);
                     html=html.replace("#{content}",data[i].content);
+                    html=html.replace("#{deadline}",data[i].deadline!=null?data[i].deadline:"无期限");
                     html=html.replace("#{level}",data[i].level);
                     html=html.replace("#{complete}",data[i].complete);
                     $("#sjw-task-ul").append(html);
@@ -263,9 +270,15 @@ function loadSelectTaskMap(time,content) {
                 var data=json.data;
                 for(var i=data.length-1;i>=0;i--){
                     var html='<li class="li-#{id}"><a name="#{createTime}"></a>'
-                        +'<div class="admin-task-meta">日期: #{createTime} 作者: #{createName} 标题: #{title} @#{executor}</div>'
+                        +'<div class="admin-task-meta">日期: #{createTime} 发布人: #{createName} @#{exename}</div>'
+                        +'<div class="admin-task-bd">'
+                        +'任务模块: #{title}'
+                        +'</div>'
                         +'<div class="admin-task-bd">'
                         +'#{content}'
+                        +'</div>'
+                        +'<div class="admin-task-bd">'
+                        +'---------------------------最后期限：#{deadline}'
                         +'</div>'
                         +'<div class="am-cf">'
                         +'<div class="am-btn-toolbar am-fl">'
@@ -290,8 +303,9 @@ function loadSelectTaskMap(time,content) {
                     html=html.replace("#{createTime}",data[i].createTime);
                     html=html.replace("#{createName}",data[i].createBy);
                     html=html.replace("#{title}",data[i].title);
-                    html=html.replace("#{executor}",data[i].executor);
+                    html=html.replace("#{exename}",data[i].exename);
                     html=html.replace("#{content}",data[i].content);
+                    html=html.replace("#{deadline}",data[i].deadline!=null?data[i].deadline:"无期限");
                     html=html.replace("#{level}",data[i].level);
                     html=html.replace("#{complete}",data[i].complete);
                     $("#sjw-task-ul-ul").append(html);

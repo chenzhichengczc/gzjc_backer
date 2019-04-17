@@ -11,4 +11,6 @@ import org.apache.ibatis.annotations.Select;
  * @Version 1.0
  */
 public interface AdminMapper extends BaseMapper<Admin> {
+
+    public String findByExecutor(String executor);
 }
