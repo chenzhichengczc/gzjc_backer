@@ -54,6 +54,7 @@ function loadFindAdmin() {
                 $("#user-QQ").val(data.qq);
                 $("#user-weibo").val(data.authority);
                 $("#user-intro").val(data.intro);
+                $("#img-avatar").attr("src","../static"+data.headPortrait);
             } else {
                 alert(json.message);
             }
@@ -72,7 +73,6 @@ function loadChangeAvatar() {
     $("#btn-change-avatar").click(function(){
         var url="../admin/changeAvatar";
         var data =new FormData($("#form-change-avatar")[0]);
-        alert(data);
         $.ajax({
             "url":url,
             "data":data,

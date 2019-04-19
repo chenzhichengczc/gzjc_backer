@@ -64,6 +64,8 @@ public class AdminServiceImpl implements AdminService {
         Session session = subject.getSession();
         session.setAttribute("admin",subject.getPrincipal());
 
+        subject.hasRole("admin");
+
         return (Admin)subject.getPrincipal();
     }
 
