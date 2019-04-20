@@ -1,5 +1,6 @@
 <!doctype html>
-<html class="no-js"  xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<html class="no-js" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro"
+      xmlns:float="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -49,15 +50,14 @@
   <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
 
     <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
-      <li><a href="javascript:;"><shiro:principal property="email"/></a></li>
       <li><a href="javascript:;"><span class="am-icon-envelope-o"></span> 收件箱 <span class="am-badge am-badge-warning">5</span></a></li>
       <li class="am-dropdown" data-am-dropdown>
         <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
-          <span class="am-icon-users"><shiro:principal property="username"/></span> 管理员 <span class="am-icon-caret-down"></span>
+          <span class="am-icon-users"></span> 管理员 <span class="am-icon-caret-down"></span>
         </a>
         <ul class="am-dropdown-content">
           <li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
-          <shiro:hasRole name="admin"><li><a href="#"><span class="am-icon-cog"></span> 设置</a></li></shiro:hasRole>
+          <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
           <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
         </ul>
       </li>
@@ -199,6 +199,22 @@
         <div class="am-panel am-panel-default">
           <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-1'}">文件上传<span class="am-icon-chevron-down am-fr" ></span></div>
           <div class="am-panel-bd am-collapse am-in" id="collapse-panel-1">
+            <!--上传-->
+              <form action="../upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="file"/>
+                <input type="submit" value="上传"/>
+              </form>
+              <form action="../batch" enctype="multipart/form-data" method="post">
+                <p  style="margin:0;">
+                  文件1<input type="file" name="file"/>
+                </p>
+                <p style="margin:0;">
+                  文件2<input type="file" name="file"/>
+                </p>
+                <input type="submit" value="上传"/>
+              </form>
+            <a href="../download">下载文件</a>
+
             <ul class="am-list admin-content-file">
               <li>
                 <strong><span class="am-icon-upload"></span> Kong-cetian.Mp3</strong>
@@ -281,8 +297,6 @@
               <label class="sjw-lb-1 sjw-lb-level">执行人：</label>
               <select id="sjw-executor" name="executor" class="sjw-select-executor">
               </select>
-              <label class="sjw-lb-1 sjw-lb-level">任务期限：</label>
-              <input type="date" name="deadline">
             </div>
           </form>
           <div class="sjw-rw-2">
@@ -320,21 +334,6 @@
           <div class="sjw-rw-2">
             <button id="sjw-bt-tj2" type="button" class="am-btn am-btn-default am-radius">修改</button>
             <button id="sjw-bt-qx2" type="button" class="am-btn am-btn-default am-radius">取消</button>
-          </div>
-        </div>
-      </div>
-
-      <div id="sjw-ly-1" class="sjw-ly-1">
-        <div>
-          <form id="sjw-form-leave">
-            <div>
-              <label class="sjw-lb-1">留言：</label>
-              <textarea name="content" class="sjw-lynr-1"></textarea>
-            </div>
-          </form>
-          <div class="sjw-rw-2">
-            <button id="sjw-bt-ly" type="button" class="am-btn am-btn-default am-radius am-fr">留言</button>
-            <button id="sjw-bt-qx3" type="button" class="am-btn am-btn-default am-radius am-fr">取消</button>
           </div>
         </div>
       </div>
@@ -404,66 +403,45 @@
         <div class="am-panel am-panel-default">
           <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-3'}">最近留言<span class="am-icon-chevron-down am-fr" ></span></div>
           <div class="am-panel-bd am-collapse am-in am-cf" id="collapse-panel-3">
-            <div class="sjw-task  sjw-leave-div-02">
-              <input id="sjw-date-leave" type="date" class="sjw-a-task"><input id="sjw-text-leave" type="text" placeholder="请输入搜索内容" class="sjw-a-task"><a id="sjw-leave-a" class="am-btn am-btn-default am-round sjw-a-task">确定</a>
-            </div>
-            <div id="sjw-leave-div" class="sjw-leave-div">
-            <ul id = "sjw-ul-leave" class="am-comments-list admin-content-comment">
-              <!--<li class="am-comment">-->
-                <!--<a href="#"><img src="http://amui.qiniudn.com/bw-2014-06-19.jpg?imageView/1/w/96/h/96" alt="" class="am-comment-avatar" width="48" height="48"></a>-->
-                <!--<div class="am-comment-main">-->
-                  <!--<header class="am-comment-hd">-->
-                    <!--<div class="am-comment-meta"><a href="#" class="am-comment-author">某人</a> 评论于 <time>2014-7-12 15:30</time></div>-->
-                  <!--</header>-->
-                  <!--<div class="am-comment-bd"><p>遵循 “移动优先（Mobile First）”、“渐进增强（Progressive enhancement）”的理念，可先从移动设备开始开发网站，逐步在扩展的更大屏幕的设备上，专注于最重要的内容和交互，很好。</p>-->
-                  <!--</div>-->
+            <ul class="am-comments-list admin-content-comment">
+              <li class="am-comment">
+                <a href="#"><img src="http://amui.qiniudn.com/bw-2014-06-19.jpg?imageView/1/w/96/h/96" alt="" class="am-comment-avatar" width="48" height="48"></a>
+                <div class="am-comment-main">
+                  <header class="am-comment-hd">
+                    <div class="am-comment-meta"><a href="#" class="am-comment-author">某人</a> 评论于 <time>2014-7-12 15:30</time></div>
+                  </header>
+                  <div class="am-comment-bd"><p>遵循 “移动优先（Mobile First）”、“渐进增强（Progressive enhancement）”的理念，可先从移动设备开始开发网站，逐步在扩展的更大屏幕的设备上，专注于最重要的内容和交互，很好。</p>
+                  </div>
 
-                <!--</div>-->
-              <!--</li>-->
+                </div>
+              </li>
 
 
-              <!--<li class="am-comment">-->
-                <!--<a href="#"><img src="http://amui.qiniudn.com/bw-2014-06-19.jpg?imageView/1/w/96/h/96" alt="" class="am-comment-avatar" width="48" height="48"></a>-->
-                <!--<div class="am-comment-main">-->
-                  <!--<header class="am-comment-hd">-->
-                    <!--<div class="am-comment-meta"><a href="#" class="am-comment-author">某人</a> 评论于 <time>2014-7-12 15:30</time></div>-->
-                  <!--</header>-->
-                  <!--<div class="am-comment-bd"><p>有效减少为兼容旧浏览器的臃肿代码；基于 CSS3 的交互效果，平滑、高效。AMUI专注于现代浏览器（支持HTML5），不再为过时的浏览器耗费资源，为更有价值的用户提高更好的体验。</p>-->
-                  <!--</div>-->
-                <!--</div>-->
-              <!--</li>-->
-
-              <!--<li class="am-comment">-->
-                <!--<a href="#"><img src="http://amui.qiniudn.com/bw-2014-06-19.jpg?imageView/1/w/96/h/96" alt="" class="am-comment-avatar" width="48" height="48"></a>-->
-                <!--<div class="am-comment-main">-->
-                  <!--<header class="am-comment-hd">-->
-                    <!--<div class="am-comment-meta"><a href="#" class="am-comment-author">某人</a> 评论于 <time>2014-7-12 15:30</time></div>-->
-                  <!--</header>-->
-                  <!--<div class="am-comment-bd"><p>有效减少为兼容旧浏览器的臃肿代码；基于 CSS3 的交互效果，平滑、高效。AMUI专注于现代浏览器（支持HTML5），不再为过时的浏览器耗费资源，为更有价值的用户提高更好的体验。</p>-->
-                  <!--</div>-->
-                <!--</div>-->
-              <!--</li>-->
+             <!-- <li class="am-comment">
+                <a href="#"><img src="http://amui.qiniudn.com/bw-2014-06-19.jpg?imageView/1/w/96/h/96" alt="" class="am-comment-avatar" width="48" height="48"></a>
+                <div class="am-comment-main">
+                  <header class="am-comment-hd">
+                    <div class="am-comment-meta"><a href="#" class="am-comment-author">某人</a> 评论于 <time>2014-7-12 15:30</time></div>
+                  </header>
+                  <div class="am-comment-bd"><p>有效减少为兼容旧浏览器的臃肿代码；基于 CSS3 的交互效果，平滑、高效。AMUI专注于现代浏览器（支持HTML5），不再为过时的浏览器耗费资源，为更有价值的用户提高更好的体验。</p>
+                  </div>
+                </div>
+              </li>-->
             </ul>
+
+            <div class="am-fr">
+              <button type="button" class="am-btn am-btn-default am-btn-xs">添加</button>
             </div>
 
-            <div class="sjw-leave-div-01">
-              温馨提示：点击确定按钮可刷新
-              <div class="am-fr">
-                <div class="sjw-task">
-                  <button id="sjw-bt-leave" type="button" class="am-btn am-btn-default am-round am-fr">留言</button>
-              </div>
-              </div>
-            </div>
-
-            <!--<ul class="am-pagination am-fr admin-content-pagination" style="margin-top: 40px">-->
-              <!--<li class="am-disabled"><a href="#">&laquo;</a></li>-->
-              <!--<li class="am-active"><a href="#">1</a></li>-->
-              <!--<li><a href="#">2</a></li>-->
-              <!--<li><a href="#">3</a></li>-->
-              <!--<li><a href="#">4</a></li>-->
-              <!--<li><a href="#">5</a></li>-->
-              <!--<li><a href="#">&raquo;</a></li>-->
-            <!--</ul>-->
+            <ul class="am-pagination am-fr admin-content-pagination" style="margin-top: 40px">
+              <li class="am-disabled"><a href="#">&laquo;</a></li>
+              <li class="am-active"><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li><a href="#">&raquo;</a></li>
+            </ul>
           </div>
         </div>
       </div>
