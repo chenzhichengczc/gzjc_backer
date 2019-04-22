@@ -13,6 +13,10 @@ spring:
   # 环境 dev|test|prod 开发/测试/上线
   profiles:
     active: dev
+
+  devtools:
+    restart:
+      enabled: true
   # jackson时间格式化
   jackson:
     time-zone: GMT+8
@@ -44,12 +48,7 @@ spring:
     add-mappings: true
   thymeleaf:
     cache: false
-  devtools:
-    restart:
-      enabled: true
-    remote:
-      restart:
-        enabled: true
+
 
 #mybatis
 mybatis-plus:

@@ -10,7 +10,7 @@ function loadPage() {
     //任务弹框
     loadTask();
     //加载流量分析
-    loadStaticVisit();
+    //loadStaticVisit();
     //加载执行人成员
     loadFindExecutor();
     //添加任务
