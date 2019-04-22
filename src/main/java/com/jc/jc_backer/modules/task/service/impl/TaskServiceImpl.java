@@ -33,11 +33,12 @@ public class TaskServiceImpl implements TaskService {
      * @param title 发布标题
      */
     @Override
-    public void newTask(Long uid, String name, String content, String title,String executor,Integer level) {
+    public void newTask(Long uid, String name, String content, String title,String executor,String deadline,Integer level) {
         //对一些可能出现的异常进行处理
         if(uid==null){throw new JcException("新增任务失败！尝试访问的用户ID不存在！");}
         if(name==null){throw new JcException("新增任务失败！尝试访问的用户名不存在！");}
         Admin admin=adminMapper.selectById(uid);
+        String exename= adminMapper.findByExecutor(executor);
         if(!name.equals(admin.getName())){throw new JcException("新增任务失败！非法访问！");}
         //创建任务实体类
         Task task = new Task();
@@ -46,6 +47,8 @@ public class TaskServiceImpl implements TaskService {
         task.setContent(content);
         task.setTitle(title);
         task.setExecutor(executor);
+        task.setExename(exename);
+        task.setDeadline(deadline);
         task.setCreateBy(name);
         task.setLevel(level);
         //执行添加到数据库
@@ -101,8 +104,10 @@ public class TaskServiceImpl implements TaskService {
     public void updateByTask(Task task) {
         if(task.getRemove()==0){throw new JcException("修改任务失败！尝试访问的任务不存在！");}
         Task task1=taskMapper.selectById(task.getTid());
+        String exename=adminMapper.findByExecutor(task.getExecutor());
         task.setCreateTime(task1.getCreateTime());
         task.setCreateBy(task1.getCreateBy());
+        task.setExename(exename);
         updateById(task);
     }
 

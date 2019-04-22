@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public interface TaskService {
 
-    public void newTask(Long uid,String name,String content,String title,String executor,Integer level);
+    public void newTask(Long uid,String name,String content,String title,String executor,String deadline,Integer level);
 
     public List<Task> findTask();
 

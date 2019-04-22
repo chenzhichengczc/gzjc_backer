@@ -251,13 +251,28 @@ gallery.html css
   left: 35%;
   top: 10%;
   border:3px solid;
-  border-color: #aaaaaa;
-  background-color: #c7c7c7;
+  border-color: #E4EAF1;
+  background-color: #E4EAF1;
   width: 400px;
   height: 500px;
   padding: 20px;
   overflow:hidden;
   z-index: 10;
+}
+
+.sjw-ly-1{
+    display: none;
+    position: fixed;
+    left: 35%;
+    top: 10%;
+    border:3px solid;
+    border-color: #E4EAF1;
+    background-color: #E4EAF1;
+    width: 400px;
+    height: 280px;
+    padding: 20px;
+    overflow:hidden;
+    z-index: 10;
 }
 
 .sjw-task{
@@ -270,6 +285,11 @@ gallery.html css
 .sjw-nr-1{
   width: 350px;
   height: 250px;
+}
+
+.sjw-lynr-1{
+    width: 100%;
+    height: 150px;
 }
 
 .sjw-rw-2{
@@ -293,6 +313,12 @@ gallery.html css
 .sjw-task-div{
   height: 400px;
   overflow-y: scroll;
+}
+
+.sjw-leave-div{
+    border:1px solid #c9e7c9;
+    height: 400px;
+    overflow-y: scroll;
 }
 
 .sjw-h5{
@@ -350,3 +376,31 @@ gallery.html css
 .sjw-a-task{
   margin-right: 15px;
 }
+
+.sjw-img-tx{
+  margin-left: 10px;
+  margin-right: 0px;
+  width: 50%;
+}
+
+.sjw-img-tx-01{
+    padding:5px;
+}
+
+.am-comment-avatar-jw{
+  float:left;
+  width:120px;
+  height:150px;
+  border-radius:5%;
+  border:1px solid transparent;
+}
+
+.sjw-leave-div-01{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.sjw-leave-div-02{
+  margin-bottom: 20px;
+}
+

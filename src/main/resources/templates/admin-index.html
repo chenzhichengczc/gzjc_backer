@@ -1,5 +1,6 @@
 <!doctype html>
-<html class="no-js"  xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<html class="no-js" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro"
+      xmlns:float="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -198,6 +199,22 @@
         <div class="am-panel am-panel-default">
           <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-1'}">文件上传<span class="am-icon-chevron-down am-fr" ></span></div>
           <div class="am-panel-bd am-collapse am-in" id="collapse-panel-1">
+            <!--上传-->
+              <form action="../upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="file"/>
+                <input type="submit" value="上传"/>
+              </form>
+              <form action="../batch" enctype="multipart/form-data" method="post">
+                <p  style="margin:0;">
+                  文件1<input type="file" name="file"/>
+                </p>
+                <p style="margin:0;">
+                  文件2<input type="file" name="file"/>
+                </p>
+                <input type="submit" value="上传"/>
+              </form>
+            <a href="../download">下载文件</a>
+
             <ul class="am-list admin-content-file">
               <li>
                 <strong><span class="am-icon-upload"></span> Kong-cetian.Mp3</strong>

@@ -7,6 +7,7 @@ import com.jc.jc_backer.modules.task.service.TaskService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -19,16 +20,20 @@ public class TaskController {
     private TaskService taskService;
 
     @PostMapping("/newTask")
-    public ResponseUtil newTask(HttpSession session,String content,String title,String executor,Integer level){
+    public ResponseUtil newTask(HttpSession session,String content,String title,String executor,String deadline,Integer level){
         Admin admin=(Admin) session.getAttribute("admin");
         Long uid=admin.getId();
         String name=admin.getName();
-        taskService.newTask(uid,name,content,title,executor,level);
+        taskService.newTask(uid,name,content,title,executor,deadline,level);
         return ResponseUtil.success("添加成功！");
     }
 
     @GetMapping("/findTask")
-    public ResponseUtil findTask(){
+    public ResponseUtil findTask(HttpSession session){
+        Admin admin = (Admin)session.getAttribute("admin");
+        if(!admin.getUsername().equals("admin")){
+            return null;
+        }
         List<Task> tasklist = taskService.findTask();
         return ResponseUtil.success(tasklist);
     }

@@ -37,8 +37,14 @@ public class Task extends BasicEntity {
     @ApiModelProperty(value = "发布标题",name = "title")
     private String title;
 
-    @ApiModelProperty(value = "执行人",name = "executor")
+    @ApiModelProperty(value = "执行人邮箱",name = "executor")
     private String executor;
+
+    @ApiModelProperty(value = "执行人",name = "exename")
+    private String exename;
+
+    @ApiModelProperty(value = "最后完成日期",name = "deadline")
+    private String deadline;
 
     @ApiModelProperty(value = "是否完成0是1否，默认1否",name = "complete")
     private Integer complete=1;

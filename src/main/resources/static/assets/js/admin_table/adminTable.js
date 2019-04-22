@@ -187,17 +187,19 @@ function loadAudit() {
         loadSelectAll(audit,category,pageNum);
     });
     $("#sjw-fy-a0").click(function () {
-        if(pageNum<=1){return ;}
-        if(pageNum>1 && pageNum<=5){
+        var a5=$("#sjw-fy-a5").html();
+        a5 = parseInt(a5);
+        if(pageNum<=1){
+            return ;
+        }else if(pageNum<=5 && a5==5){
             pageNum--;
             console.log("if-4:"+pageNum);
-        }
-        if(pageNum>5){
-            $("#sjw-fy-a1").html(pageNum-5);
-            $("#sjw-fy-a2").html(pageNum-4);
-            $("#sjw-fy-a3").html(pageNum-3);
-            $("#sjw-fy-a4").html(pageNum-2);
-            $("#sjw-fy-a5").html(pageNum-1);
+        }else {
+            $("#sjw-fy-a1").html(a5-5);
+            $("#sjw-fy-a2").html(a5-4);
+            $("#sjw-fy-a3").html(a5-3);
+            $("#sjw-fy-a4").html(a5-2);
+            $("#sjw-fy-a5").html(a5-1);
             pageNum--;
             console.log("if-5:"+pageNum);
         }
@@ -230,16 +232,17 @@ function loadAudit() {
         loadSelectAll(audit,category,pageNum);
     });
     $("#sjw-fy-a6").click(function () {
-        if(pageNum>=1 && pageNum<=4){
+        var a5=$("#sjw-fy-a5").html();
+        a5 = parseInt(a5);
+        if(pageNum<5 && a5==5){
             pageNum++;
             console.log("if-1:"+pageNum);
-        }
-        if(pageNum>=5){
-            $("#sjw-fy-a1").html(pageNum-3);
-            $("#sjw-fy-a2").html(pageNum-2);
-            $("#sjw-fy-a3").html(pageNum-1);
-            $("#sjw-fy-a4").html(pageNum);
-            $("#sjw-fy-a5").html(pageNum+1);
+        }else {
+            $("#sjw-fy-a1").html(a5-3);
+            $("#sjw-fy-a2").html(a5-2);
+            $("#sjw-fy-a3").html(a5-1);
+            $("#sjw-fy-a4").html(a5);
+            $("#sjw-fy-a5").html(a5+1);
             pageNum++;
             console.log("if-2:"+pageNum);
         }
