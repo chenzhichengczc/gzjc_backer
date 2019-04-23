@@ -44,9 +44,9 @@ public class Admin extends BasicEntity {
     @ApiModelProperty(value = "盐值",name = "salt")
     private  String salt;
 
-    //角色列表
-    @ApiModelProperty(value = "角色列表",name = "roleIds")
-    private String roleIds;
+//    //角色列表
+//    @ApiModelProperty(value = "角色列表",name = "roleIds")
+//    private String roleIds;
 
     //是否锁定 1 不锁定 0锁定
     @ApiModelProperty(value = "是否锁定",name = "locked")

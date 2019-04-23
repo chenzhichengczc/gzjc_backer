@@ -12,6 +12,10 @@ function notNull(value) {
 $(function () {
 
     $(".button").click(function () {
+        if(!($("#username").val().match(/^[a-z0-9]+([._\\-]*[a-z0-9])*@jckc.cn$/))){
+            alert("邮箱信息有误,请确认!")
+            return
+        }
         if(notNull($("#username").val()) && notNull($("#password").val())){
             var data = {"username":$("#username").val(),"password":$("#password").val()}
             $.post("../admin/loginAdmin",data,function (result) {
