@@ -1,5 +1,8 @@
 package com.jc.jc_backer.common.utils;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import javax.websocket.Session;
 import java.io.*;
 
@@ -14,15 +17,17 @@ public class TailLogUtil extends Thread{
 
     private Session session;
 
-    private BufferedReader bufferedReader;
 
-    private long endLength = 0;
+    private long endLength ;
 
     private String line;
 
-    public TailLogUtil(Session session,InputStream inputStream){
-        this.session = session;
-        this.bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+    private String lineUtf8;
+
+    private String file;
+
+    public TailLogUtil(String file){
+        this.file = file;
     }
 
 
@@ -30,20 +35,18 @@ public class TailLogUtil extends Thread{
     public void run() {
 
         try {
-            String file = "E:/projects/gzjc/logs/test.log";
             RandomAccessFile randomAccessFile = new RandomAccessFile(file,"rw");
+            endLength = 0;
             while (true){
-
                 randomAccessFile.seek(endLength);
                 endLength = randomAccessFile.length();
-                if((line = randomAccessFile.readLine()) != null){
-                    line.getBytes("utf-8");
-                    session.getBasicRemote().sendText(line);
+                while((line = randomAccessFile.readLine()) != null){
+                    //后期查看是否需要调优  不知道内存是否会溢出  需要看下gc回收对象速度
+                    lineUtf8 = new String(line.getBytes("ISO-8859-1"),"utf-8");
+                    session.getBasicRemote().sendText(lineUtf8);
                 }
+
             }
-21
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }

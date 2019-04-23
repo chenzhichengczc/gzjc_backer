@@ -2,6 +2,11 @@ package com.jc.jc_backer.Websocket;
 
 import com.jc.jc_backer.common.exception.JcException;
 import com.jc.jc_backer.common.utils.TailLogUtil;
+import com.jc.jc_backer.config.ReadApplicationUtil;
+import com.jc.jc_backer.modules.leave.service.LeaveService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import javax.websocket.OnClose;
@@ -19,29 +24,37 @@ import java.io.InputStream;
  * @modified By：
  * @version:
  */
-@ServerEndpoint("/getLog")
 @Component
+@ServerEndpoint("/getLog")
 public class WebsocketServer {
 
     private Process process;
 
     private InputStream inputStream;
 
+    @Autowired
+    private ReadApplicationUtil errorLog;
+
+    @Value("${file.path}")
+    private String file;
+
     @OnOpen
     public void open(Session session){
         System.out.println("WebsocketServer.open");
         try {
-            String[] command = {"cmd.exe", "/C", "type e:\\projects\\gzjc\\logs\\test.log"};
+           /* String[] command = {"cmd.exe", "/C", "type e:\\projects\\gzjc\\logs\\test.log"};
             //Runtime.getRuntime().exec("tail -f /usr/local/jar/logs/test.log);
             process = Runtime.getRuntime().exec(command);
             System.out.println("process = " + process);
             if(process == null){
                 throw new JcException("process为空");
             }
-            inputStream = process.getInputStream();
-            TailLogUtil tailLogThread = new TailLogUtil(session, inputStream);
+            inputStream = process.getInputStream();*/
+            System.out.println("file = " + file);
+            System.out.println("file = " + errorLog.getError());
+            TailLogUtil tailLogThread = new TailLogUtil(errorLog.getError());
             tailLogThread.start();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
