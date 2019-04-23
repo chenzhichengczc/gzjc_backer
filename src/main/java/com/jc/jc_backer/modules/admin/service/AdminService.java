@@ -23,7 +23,4 @@ public interface AdminService{
 
     public void changeAvatar(Long id,String avatar);
 
-    Set<String> findRoles(String username);
-
-    Set<String> findPermission(String username);
 }

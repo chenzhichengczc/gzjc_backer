@@ -3,20 +3,11 @@ package com.jc.jc_backer.realm;
 import com.jc.jc_backer.common.exception.JcException;
 import com.jc.jc_backer.modules.admin.entity.Admin;
 import com.jc.jc_backer.modules.admin.service.AdminService;
-import com.jc.jc_backer.modules.admin.service.RoleService;
-import com.jc.jc_backer.modules.admin.service.impl.AdminServiceImpl;
-import lombok.NonNull;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
-import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
-import javax.validation.constraints.NotNull;
 
 /**
  * @Author: Charles Chan
@@ -36,11 +27,15 @@ public class AdminShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        String username = ((Admin)principals.getPrimaryPrincipal()).getUsername();
-        SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
-        simpleAuthorizationInfo.setRoles(adminService.findRoles(username));
-        simpleAuthorizationInfo.setStringPermissions(adminService.findPermission(username));
-        return simpleAuthorizationInfo;
+        // 卸载如下代码 ------------
+//        String username = ((Admin)principals.getPrimaryPrincipal()).getUsername();
+//        SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
+//        simpleAuthorizationInfo.setRoles(adminService.findRoles(username));
+//        simpleAuthorizationInfo.setStringPermissions(adminService.findPermission(username));
+        //卸载如上代码 ------------
+
+
+        return null;
     }
 
 
