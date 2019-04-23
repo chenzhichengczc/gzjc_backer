@@ -2,7 +2,7 @@ package com.jc.jc_backer.Websocket;
 
 import com.jc.jc_backer.common.exception.JcException;
 import com.jc.jc_backer.common.utils.TailLogUtil;
-import com.jc.jc_backer.config.ReadApplicationUtil;
+
 import com.jc.jc_backer.modules.leave.service.LeaveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,8 +32,8 @@ public class WebsocketServer {
 
     private InputStream inputStream;
 
-    @Autowired
-    private ReadApplicationUtil errorLog;
+    /*@Autowired
+    private ReadApplicationUtil errorLog;*/
 
     @Value("${file.path}")
     private String file;
@@ -51,8 +51,8 @@ public class WebsocketServer {
             }
             inputStream = process.getInputStream();*/
             System.out.println("file = " + file);
-            System.out.println("file = " + errorLog.getError());
-            TailLogUtil tailLogThread = new TailLogUtil(errorLog.getError());
+            /*System.out.println("file = " + errorLog.getError());*/
+            TailLogUtil tailLogThread = new TailLogUtil(file);
             tailLogThread.start();
         } catch (Exception e) {
             e.printStackTrace();

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
  * @modified By：
  * @version:
  */
+/*
 @Component
 @ConfigurationProperties(prefix = "log")
 public class ReadApplicationUtil {
@@ -24,3 +25,4 @@ public class ReadApplicationUtil {
         this.error = error;
     }
 }
+*/

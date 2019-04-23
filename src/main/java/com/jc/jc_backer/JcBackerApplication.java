@@ -13,7 +13,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @MapperScan("com.jc.jc_backer.modules.*.mapper")
-@ComponentScan("com.jc.jc_backer.*")
 @SpringBootConfiguration
 @EnableScheduling
 public class JcBackerApplication extends SpringBootServletInitializer {
