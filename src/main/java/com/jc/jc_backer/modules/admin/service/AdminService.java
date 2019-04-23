@@ -2,6 +2,7 @@ package com.jc.jc_backer.modules.admin.service;
 
 import com.jc.jc_backer.modules.admin.entity.Admin;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -22,5 +23,7 @@ public interface AdminService{
     public Admin findByAdmin(Long id);
 
     public void changeAvatar(Long id,String avatar);
+
+    public List<Admin> getAllEmpoyee();
 
 }

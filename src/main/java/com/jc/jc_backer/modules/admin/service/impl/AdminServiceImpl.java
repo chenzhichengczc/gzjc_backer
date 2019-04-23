@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @Author: Charles Chan
@@ -84,6 +85,7 @@ public class AdminServiceImpl implements AdminService {
         updateById(admin);
     }
 
+
     /**
      * 根据id查询用户信息
      * @param id
@@ -120,6 +122,15 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public Admin findByName(String name) {
         return adminMapper.selectList(new EntityWrapper<Admin>().eq("email", name)).get(0);
+    }
+
+    /**
+     * 显示全部员工信息
+     * @return 员工list
+     */
+    @Override
+    public List<Admin> getAllEmpoyee() {
+        return adminMapper.selectList(new EntityWrapper<Admin>());
     }
 
 }

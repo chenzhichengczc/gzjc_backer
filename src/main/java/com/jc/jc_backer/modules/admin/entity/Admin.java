@@ -25,10 +25,10 @@ public class Admin extends BasicEntity {
     @TableId(type = IdType.AUTO)
     private  long id;
 
-    //组织ID
-    @ApiModelProperty(value = "组织ID",name = "organizationId")
-    @TableId(type = IdType.AUTO)
-    private  long organizationId = 1;
+//    //组织ID
+//    @ApiModelProperty(value = "组织ID",name = "organizationId")
+//    @TableId(type = IdType.AUTO)
+//    private  long organizationId = 1;
 
     //用户名
     @ApiModelProperty(value = "用户名",name = "username")
