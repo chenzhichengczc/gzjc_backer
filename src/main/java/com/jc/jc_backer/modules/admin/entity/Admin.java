@@ -25,10 +25,10 @@ public class Admin extends BasicEntity {
     @TableId(type = IdType.AUTO)
     private  long id;
 
-    //组织ID
-    @ApiModelProperty(value = "组织ID",name = "organizationId")
-    @TableId(type = IdType.AUTO)
-    private  long organizationId = 1;
+//    //组织ID
+//    @ApiModelProperty(value = "组织ID",name = "organizationId")
+//    @TableId(type = IdType.AUTO)
+//    private  long organizationId = 1;
 
     //用户名
     @ApiModelProperty(value = "用户名",name = "username")
@@ -44,13 +44,40 @@ public class Admin extends BasicEntity {
     @ApiModelProperty(value = "盐值",name = "salt")
     private  String salt;
 
-    //角色列表
-    @ApiModelProperty(value = "角色列表",name = "roleIds")
-    private String roleIds;
+//    //角色列表
+//    @ApiModelProperty(value = "角色列表",name = "roleIds")
+//    private String roleIds;
 
     //是否锁定 1 不锁定 0锁定
     @ApiModelProperty(value = "是否锁定",name = "locked")
     private  int locked = 1;
 
+    //姓名
+    @ApiModelProperty(value = "姓名",name = "name")
+    private  String name ;
+
+    //邮箱
+    @ApiModelProperty(value = "邮箱",name = "email")
+    private  String email ;
+
+    //电话
+    @ApiModelProperty(value = "电话",name = "telephone")
+    private  String telephone ;
+
+    //QQ
+    @ApiModelProperty(value = "QQ",name = "qq")
+    private  String qq ;
+
+    //权限--(0-管理员,1-vip员工,2-普通员工)
+    @ApiModelProperty(value = "权限",name = "authority")
+    private  Integer authority;
+
+    //简介
+    @ApiModelProperty(value = "简介",name = "intro")
+    private String intro;
+
+    //头像
+    @ApiModelProperty(value = "头像",name = "headPortrait")
+    private  String headPortrait ;
 
 }

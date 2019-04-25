@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jc.jc_backer.modules.leave.mapper.LeaveMapper">
+
+    <select id="findByLeaveMap" parameterType="java.util.Map" resultType="com.jc.jc_backer.modules.leave.entity.Leave">
+        SELECT *
+        FROM jc_sys_leave
+        WHERE uid !=""
+        <if test="time !=null and time !=''">
+            AND create_time LIKE "%${time}%"
+        </if>
+
+        <if test="content !=null and content !=''">
+            AND content LIKE "%${content}%"
+        </if>
+        ORDER BY create_time
+    </select>
+
+</mapper>

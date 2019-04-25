@@ -1,5 +1,6 @@
 <!doctype html>
-<html class="no-js"  xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<html class="no-js" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro"
+      xmlns:float="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,7 +30,7 @@
   <!--<![endif]-->
   <script src="../static/assets/js/app.js"></script>
 
-  <script src="../static/assets/js/admin_index/adminIndex.js"></script>
+
 
 
 </head>
@@ -77,6 +78,7 @@
           <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 帮助页</a></li>
           <li><a href="admin-gallery.html"><span class="am-icon-th"></span> 相册页面<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
           <li><a href="admin-log.html"><span class="am-icon-calendar"></span> 系统日志</a></li>
+          <li><a href="admin-manager.html"><span class="am-icon-comment"></span> 员工管理</a></li>
           <li><a href="admin-404.html"><span class="am-icon-bug"></span> 404</a></li>
         </ul>
       </li>
@@ -198,6 +200,22 @@
         <div class="am-panel am-panel-default">
           <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-1'}">文件上传<span class="am-icon-chevron-down am-fr" ></span></div>
           <div class="am-panel-bd am-collapse am-in" id="collapse-panel-1">
+            <!--上传-->
+              <form action="../upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="file"/>
+                <input type="submit" value="上传"/>
+              </form>
+              <form action="../batch" enctype="multipart/form-data" method="post">
+                <p  style="margin:0;">
+                  文件1<input type="file" name="file"/>
+                </p>
+                <p style="margin:0;">
+                  文件2<input type="file" name="file"/>
+                </p>
+                <input type="submit" value="上传"/>
+              </form>
+            <a href="../download">下载文件</a>
+
             <ul class="am-list admin-content-file">
               <li>
                 <strong><span class="am-icon-upload"></span> Kong-cetian.Mp3</strong>
@@ -258,12 +276,92 @@
         </div>
       </div>
 
-      <div class="am-u-md-6">
+      <div id="sjw-rw-1" class="sjw-rw-1">
+        <div>
+          <form id="sjw-form-task">
+            <div>
+              <label class="sjw-lb-1">标题：</label>
+              <input name="title" type="text" class="sjw-bt-1">
+            </div>
+            <div>
+              <label class="sjw-lb-1">内容：</label>
+              <textarea name="content" class="sjw-nr-1"></textarea>
+            </div>
+            <div>
+              <label class="sjw-lb-1 sjw-lb-level">重要级别：</label>
+              <select name="level" class="sjw-select-level">
+                <option value="0">请选择</option>
+                <option value="1">重要</option>
+                <option value="2">中等</option>
+                <option value="3">还行</option>
+              </select>
+              <label class="sjw-lb-1 sjw-lb-level">执行人：</label>
+              <select id="sjw-executor" name="executor" class="sjw-select-executor">
+              </select>
+            </div>
+          </form>
+          <div class="sjw-rw-2">
+            <button id="sjw-bt-tj" type="button" class="am-btn am-btn-default am-radius">提交任务</button>
+            <button id="sjw-bt-qx" type="button" class="am-btn am-btn-default am-radius">取消</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="sjw-rw-2" class="sjw-rw-1">
+        <div>
+          <form id="sjw-form-task2">
+            <input class="sjw-disp" name="tid">
+            <div>
+              <label class="sjw-lb-1">标题：</label>
+              <input name="title" type="text" class="sjw-bt-1">
+            </div>
+            <div>
+              <label class="sjw-lb-1">内容：</label>
+              <textarea name="content" class="sjw-nr-1"></textarea>
+            </div>
+            <div>
+              <label class="sjw-lb-1 sjw-lb-level">重要级别：</label>
+              <select name="level" class="sjw-select-level">
+                <option value="0">请选择</option>
+                <option value="1">重要</option>
+                <option value="2">中等</option>
+                <option value="3">还行</option>
+              </select>
+              <label class="sjw-lb-1 sjw-lb-level">执行人：</label>
+              <select id="sjw-executor2" name="executor" class="sjw-select-executor">
+              </select>
+            </div>
+          </form>
+          <div class="sjw-rw-2">
+            <button id="sjw-bt-tj2" type="button" class="am-btn am-btn-default am-radius">修改</button>
+            <button id="sjw-bt-qx2" type="button" class="am-btn am-btn-default am-radius">取消</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="sjw-rw-head" class="am-u-md-6">
         <div class="am-panel am-panel-default">
           <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-4'}">任务 task<span class="am-icon-chevron-down am-fr" ></span></div>
-          <div id="collapse-panel-4" class="am-panel-bd am-collapse am-in">
-            <ul class="am-list admin-content-task">
-              <li>
+          <div id="collapse-panel-4" class="am-panel-bd am-collapse am-in sjw-task-div">
+            <ul id="sjw-task-ul" class="am-list admin-content-task">
+              <li class="sjw-task">
+                <div class="sjw-task">
+                    <button id="sjw-bt-task" type="button" class="am-btn am-btn-default am-round am-fr">添加任务</button>
+                </div>
+              </li>
+              <li class="sjw-task">
+                <div class="sjw-task">
+                  <input id="sjw-date-task" type="date" class="sjw-a-task"><input id="sjw-text-task" type="text" placeholder="请输入搜索内容" class="sjw-a-task"><a id="sjw-date-a" class="am-btn am-btn-default am-round sjw-a-task">确定</a>
+                </div>
+              </li>
+              <li class="sjw-task">
+                 <div class="sjw-task">
+                     <ul id="sjw-task-ul-ul" class="am-list admin-content-task">
+
+                     </ul>
+                 </div>
+              </li>
+              <!--<li>
                 <div class="admin-task-meta"> Posted on 25/1/2120 by John Clark</div>
                 <div class="admin-task-bd">
                   The starting place for exploring business management; helping new managers get started and experienced managers get better.
@@ -298,7 +396,7 @@
                     <button type="button" class="am-btn am-btn-default am-btn-xs">删除</button>
                   </div>
                 </div>
-              </li>
+              </li>-->
             </ul>
           </div>
         </div>
@@ -359,6 +457,6 @@
   <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
 </footer>
 
-
+<script src="../static/assets/js/admin_index/adminIndex.js"></script>
 </body>
 </html>

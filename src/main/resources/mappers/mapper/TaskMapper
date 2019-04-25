@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jc.jc_backer.modules.task.mapper.TaskMapper">
+
+    <select id="selectTaskMap" parameterType="java.util.Map" resultType="com.jc.jc_backer.modules.task.entity.Task">
+        SELECT *
+        FROM jc_sys_task
+        WHERE
+        <if test="email != null and email !=''">
+            executor = "${email}" AND remove != 0
+        </if>
+
+        <if test="time !=null and time !=''">
+            AND create_time LIKE "%${time}%"
+        </if>
+
+        <if test="content !=null and content !=''">
+            AND content LIKE "%${content}%"
+        </if>
+    </select>
+
+</mapper>
