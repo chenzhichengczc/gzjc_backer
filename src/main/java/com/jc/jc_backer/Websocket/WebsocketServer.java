@@ -1,21 +1,18 @@
 package com.jc.jc_backer.Websocket;
 
-import com.jc.jc_backer.common.exception.JcException;
-import com.jc.jc_backer.common.utils.TailLogUtil;
 
-import com.jc.jc_backer.modules.leave.service.LeaveService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
+import com.jc.jc_backer.common.utils.FilePath;
+import com.jc.jc_backer.common.utils.TailLogUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import javax.websocket.OnClose;
-import javax.websocket.OnError;
-import javax.websocket.OnOpen;
-import javax.websocket.Session;
+import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author ：fenghuang
@@ -25,52 +22,38 @@ import java.io.InputStream;
  * @version:
  */
 @Component
-@ServerEndpoint("/getLog")
+@ServerEndpoint("/getInfoLog")
 public class WebsocketServer {
 
-    private Process process;
+    private static final Logger logger = LoggerFactory.getLogger(WebsocketServer.class);
 
-    private InputStream inputStream;
-
-    /*@Autowired
-    private ReadApplicationUtil errorLog;*/
-
-    @Value("${file.path}")
-    private String file;
+    private List<Session> sessionList = new ArrayList<>();
 
     @OnOpen
     public void open(Session session){
-        System.out.println("WebsocketServer.open");
+        //把每一个连入当前url的session加入到集合里面
+        sessionList.add(session);
         try {
-           /* String[] command = {"cmd.exe", "/C", "type e:\\projects\\gzjc\\logs\\test.log"};
-            //Runtime.getRuntime().exec("tail -f /usr/local/jar/logs/test.log);
-            process = Runtime.getRuntime().exec(command);
-            System.out.println("process = " + process);
-            if(process == null){
-                throw new JcException("process为空");
-            }
-            inputStream = process.getInputStream();*/
-            System.out.println("file = " + file);
-            /*System.out.println("file = " + errorLog.getError());*/
-            TailLogUtil tailLogThread = new TailLogUtil(file);
+            TailLogUtil tailLogThread = new TailLogUtil(session, FilePath.INFO_PATH);
             tailLogThread.start();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    @OnMessage
+    public void message(Session session,String message){
+        System.out.println("message = " + message);
+    }
+
     @OnClose
     public void close(Session session){
         try {
-            if(inputStream != null){
-                inputStream.close();
-            }
+            session.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if(process != null){
-            process.destroy();
-        }
+        sessionList.remove(session);
     }
 
     @OnError

@@ -59,7 +59,6 @@
           <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 帮助页</a></li>
           <li><a href="admin-gallery.html"><span class="am-icon-th"></span> 相册页面<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
           <li><a href="admin-log.html"><span class="am-icon-calendar"></span> 系统日志</a></li>
-          <li><a href="admin-log.html"  ><span class="am-icon-calendar" ></span> 系统日志</a></li>
           <li><a href="admin-manager.html"><span class="am-icon-comment"></span> 员工管理</a></li>
           <li><a href="admin-404.html"><span class="am-icon-bug"></span> 404</a></li>
         </ul>
@@ -88,7 +87,8 @@
   <!-- content start -->
   <div class="admin-content">
     <div class="am-cf am-padding">
-      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">错误日志</strong> / <small>Error Log</small></div>
+      <div class="am-f2 am-cf"><strong class="am-text-primary am-text-lg">系统日志</strong> / <small>Info Log</small></div>
+      <div class="am-fl am-cf"><strong class="am-text-primary am-error-lg">错误日志</strong> / <small>Error Log</small></div>
     </div>
 
     <hr/>
@@ -96,7 +96,6 @@
     <div class="am-g error-log">
       <div class="am-u-sm-12 am-u-sm-centered">
         <pre class="am-pre-scrollable">
-
         </pre>
         <p>这里是静态页面展示，使用时结合代码高亮插件</p>
       </div>
@@ -110,7 +109,15 @@
   <hr>
   <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
 </footer>
+<style type="text/css">
+  .am-text-primary{
+    cursor: pointer;
+  }
+  .am-error-lg {
+    font-size: 1.8rem;
+  }
 
+</style>
 <!--[if lt IE 9]>
 <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
 

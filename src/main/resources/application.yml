@@ -66,6 +66,3 @@ mybatis:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
-
-log:
-  error: "E:/projects/gzjc/logs/error/error.log"
