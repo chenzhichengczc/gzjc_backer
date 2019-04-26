@@ -1,6 +1,8 @@
 package com.jc.jc_backer.common.utils;
 
 
+import com.jc.jc_backer.common.exception.JcException;
+
 import javax.websocket.Session;
 import java.io.*;
 
@@ -33,8 +35,12 @@ public class TailLogUtil extends Thread{
     @Override
     public void run() {
         try {
+            File file =  new File(filePath);
+            if(!file.exists()){
+                throw new JcException("文件不存在");
+            }
             //读取文件
-            RandomAccessFile randomAccessFile = new RandomAccessFile(new File(filePath),"rw");
+            RandomAccessFile randomAccessFile = new RandomAccessFile(file,"rw");
             endLength = 0;
             //使用标识符判断当前线程是否中断
             while (!isInterrupted){

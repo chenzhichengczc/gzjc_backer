@@ -17,16 +17,11 @@ public class JcBackerApplicationTests {
     @Autowired
     private AdminService adminService;
 
-    @Autowired
-    private FileProperties fileProperties;
 
     @Test
     public void contextLoads() {
     }
 
-    @Test
-    public void t(){
-        System.out.println("fileProperties = " + fileProperties);
-    }
+
 
 }
