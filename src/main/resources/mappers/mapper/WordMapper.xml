@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 根节点必须是mapper -->
+<mapper namespace="com.jc.jc_backer.modules.Word.mapper.WordMapper">
+
+    <select id="findWordMessage" resultType="java.lang.Integer">
+        SELECT
+          *
+        FROM
+          jc_word
+        WHERE
+          id=#{id};
+    </select>
+
+</mapper>

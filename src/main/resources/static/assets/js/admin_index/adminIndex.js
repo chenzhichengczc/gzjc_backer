@@ -39,6 +39,8 @@ function loadStaticVisit() {
         }
     })
 }
+<<<<<<< HEAD
+=======
 
 function loadTask(){
     $("#sjw-bt-leave").click(function () {
@@ -396,3 +398,4 @@ function loadFindLeave(){
 }
 
 
+>>>>>>> ffb3da7bc5409d5aa28290b323ed3f1041201aae

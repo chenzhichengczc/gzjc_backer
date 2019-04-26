@@ -8,3 +8,14 @@ spring:
     #password: root
     password: xiaomubiao
 
+word:
+  DocId: JC2019012418010001
+  Version: V2.0
+  Date: 2019年4月17日
+
+  Version1:
+  Date1:
+  Enact1:
+  Sort1:
+  Ratify1:
+  Describe1:
