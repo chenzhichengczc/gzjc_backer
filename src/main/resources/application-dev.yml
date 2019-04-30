@@ -9,13 +9,206 @@ spring:
     password: xiaomubiao
 
 word:
+  #文档编号
   DocId: JC2019012418010001
+  #版本号
   Version: V2.0
+  #日期
   Date: 2019年4月17日
-
+#修订记录
+  #版本
   Version1:
+  #日期
   Date1:
+  #制定
   Enact1:
+  #类别
   Sort1:
+  #批准
   Ratify1:
+  #描述(注明修改的条款或页)
   Describe1:
+
+  Version2:
+  Date2:
+  Enact2:
+  Sort2:
+  Ratify2:
+  Describe2:
+
+  Version3:
+  Date3:
+  Enact3:
+  Sort3:
+  Ratify3:
+  Describe3:
+#术语与缩写解释
+  #术语缩写/名称
+  Term1: 建材
+  #解释说明
+  Explanation1: 甲方公司全称 - 广州市越起建材有限公司
+
+  Term2: 金诚
+  Explanation2: 乙方公司全称 - 广州金诚科技信息有限公司
+#参考文档
+  #文档名称
+  DocName1:
+  #文档标识号
+  DocLabelNo1:
+
+  DocName2:
+  DocLabelNo2:
+#用户需求1
+  #需求编号
+  ReqID:
+  #优先级
+  Priority:
+#用例1
+  #用例名称
+  TestCaseName1:
+  #主要角色
+  LeadRole1:
+  #前置条件
+  Precondition1:
+  #后置条件
+  PostCondition1:
+  #功能类别
+  FunctionalCategory1:
+  #功能设计描述
+  FunctionalDesignDescription1:
+  #补充说明
+  SupplementaryInstruction1:
+  #预计人工
+  ExpectedToArtificial1:
+#用例2
+  TestCaseName2:
+  LeadRole2:
+  Precondition2:
+  PostCondition2:
+  FunctionalCategory2:
+  FunctionalDesignDescription2:
+  SupplementaryInstruction2:
+  ExpectedToArtificial2:
+#用例3
+  TestCaseName3:
+  LeadRole3:
+  Precondition3:
+  PostCondition3:
+  FunctionalCategory3:
+  FunctionalDesignDescription3:
+  SupplementaryInstruction3:
+  ExpectedToArtificial3:
+#用例4
+  TestCaseName4:
+  LeadRole4:
+  Precondition4:
+  PostCondition4:
+  FunctionalCategory4:
+  FunctionalDesignDescription4:
+  SupplementaryInstruction4:
+  ExpectedToArtificial4:
+#用例5
+  TestCaseName5:
+  LeadRole5:
+  Precondition5:
+  PostCondition5:
+  FunctionalCategory5:
+  FunctionalDesignDescription5:
+  SupplementaryInstruction5:
+  ExpectedToArtificial5:
+#用例6
+  TestCaseName6:
+  LeadRole6:
+  Precondition6:
+  PostCondition6:
+  FunctionalCategory6:
+  FunctionalDesignDescription6:
+  SupplementaryInstruction6:
+  ExpectedToArtificial6:
+#用例7
+  TestCaseName7:
+  LeadRole7:
+  Precondition7:
+  PostCondition7:
+  FunctionalCategory7:
+  FunctionalDesignDescription7:
+  SupplementaryInstruction7:
+  ExpectedToArtificial7:
+#用例8
+  TestCaseName8:
+  LeadRole8:
+  Precondition8:
+  PostCondition8:
+  FunctionalCategory8:
+  FunctionalDesignDescription8:
+  SupplementaryInstruction8:
+  ExpectedToArtificial8:
+#用例9
+  TestCaseName9:
+  LeadRole9:
+  Precondition9:
+  PostCondition9:
+  FunctionalCategory9:
+  FunctionalDesignDescription9:
+  SupplementaryInstruction9:
+  ExpectedToArtificial9:
+#用例10
+  TestCaseName10:
+  LeadRole10:
+  Precondition10:
+  PostCondition10:
+  FunctionalCategory10:
+  FunctionalDesignDescription10:
+  SupplementaryInstruction10:
+  ExpectedToArtificial10:
+#用例11
+  TestCaseName11:
+  LeadRole11:
+  Precondition11:
+  PostCondition11:
+  FunctionalCategory11:
+  FunctionalDesignDescription11:
+  SupplementaryInstruction11:
+  ExpectedToArtificial11:
+#用例12
+  TestCaseName12:
+  LeadRole12:
+  Precondition12:
+  PostCondition12:
+  FunctionalCategory12:
+  FunctionalDesignDescription12:
+  SupplementaryInstruction12:
+  ExpectedToArtificial12:
+#用例13
+  TestCaseName13:
+  LeadRole13:
+  Precondition13:
+  PostCondition13:
+  FunctionalCategory13:
+  FunctionalDesignDescription13:
+  SupplementaryInstruction13:
+  ExpectedToArtificial13:
+#约束条件
+  #开发约束
+  DevelopmentConstraints:
+  #进度目标
+  ProgressOfTheTarget:
+  #质量期望
+  QualityExpectations:
+  #人员要求
+  StaffRequirement:
+  #验收准则
+  AcceptanceCriteria:
+  #维护要求
+  MaintenanceRequirements:
+  #保密要求
+  SecretAndConfidential:
+#客户基本信息
+  #客户公司名称
+  CustomerCompanyName:
+  #联系人
+  Linkman:
+  #联系方式
+  ContactWay:
+  #最终用户
+  FinalUser:

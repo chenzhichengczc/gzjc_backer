@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.enums.IdType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Data
@@ -15,49 +14,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class WordEntity {
 
-    /**
-     * 文档编号
-     */
-    @Value("${word.DocId}")
-    private String docId;
-    /**
-     * 版本号
-     */
-    @Value("${word.Version}")
-    private String version;
-    /**
-     * 日期
-     */
-    @Value("${word.Date}")
-    private String dates;
-
-    public String getDocId() {
-        return docId;
-    }
-
-    public void setDocId(String docId) {
-        this.docId = docId;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
-    public String getDate() {
-        return dates;
-    }
-
-    public void setDate(String date) {
-        this.dates = date;
-    }
-
     @TableId(type = IdType.AUTO)
     @ApiModelProperty(value = "自增ID",name = "id")
     private Integer id;
+
+    @ApiModelProperty(value = "日期", name = "dates")
+    private String date;
 
     @ApiModelProperty(value = "制定", name = "enact")
     private String enact;

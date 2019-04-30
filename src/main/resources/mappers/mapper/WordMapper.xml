@@ -3,7 +3,7 @@
 <!-- 根节点必须是mapper -->
 <mapper namespace="com.jc.jc_backer.modules.Word.mapper.WordMapper">
 
-    <select id="findWordMessage" resultType="java.lang.Integer">
+    <select id="findWordMessage" resultType="com.jc.jc_backer.modules.Word.entity.WordEntity">
         SELECT
           *
         FROM
@@ -11,5 +11,15 @@
         WHERE
           id=#{id};
     </select>
+
+    <!--<insert id="insertWordMessage" parameterType="com.jc.jc_backer.modules.Word.entity.WordEntity" useGeneratedKeys="true" keyProperty="id">-->
+        <!--INSERT INTO jc_word-->
+        <!--VALUES(-->
+               <!--#{id},#{dates},#{enact},#{sort},#{ratify},#{describes},#{term},#{explanation},#{doc_name},#{doc_label_no},#{req_id},#{priority},#{test_case_name},-->
+               <!--#{lead_role},#{precondition},#{post_condition},#{functional_category},#{functional_design_description},#{supplementary_instruction},-->
+               <!--#{expected_to_artificial},#{development_constraints},#{progress_of_the_target},#{quality_expectations},#{staff_requirement},#{acceptance_criteria},-->
+               <!--#{maintenance_requirements},#{secret_and_confidential},#{customer_company_name},#{linkman},#{contact_way},#{final_user}-->
+              <!--)-->
+    <!--</insert>-->
 
 </mapper>

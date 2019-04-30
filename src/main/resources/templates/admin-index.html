@@ -131,9 +131,9 @@
               <div class="am-dropdown" data-am-dropdown>
                 <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
                 <ul class="am-dropdown-content">
-                  <li><a href="#">1.上传</a></li>
-                  <li><a href="../download">2.下载</a></li>
-                  <li><a href="#">3.删除</a></li>
+                  <li><a href="#">1. 上传</a></li>
+                  <li><a href="../create">2. 生成</a></li>
+                  <li><a href="#">3. 删除</a></li>
                 </ul>
               </div>
             </td>
@@ -144,7 +144,7 @@
                 <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
                 <ul class="am-dropdown-content">
                   <li><a href="#">1. 上传</a></li>
-                  <li><a href="#">2. 下载</a></li>
+                  <li><a href="#">2. 生成</a></li>
                   <li><a href="#">3. 删除</a></li>
                 </ul>
               </div>
@@ -458,5 +458,17 @@
 </footer>
 
 <script src="../static/assets/js/admin_index/adminIndex.js"></script>
+
+<script type="text/javascript">
+  function download_file(url) {
+      if(typeof (download_file.iframe) == "undefined") {
+          var iframe = document.createElement("iframe");
+          download_file.iframe = iframe;
+          document.body.appendChild(download_file.iframe)
+      }
+      download_file.iframe.src = url;
+      download_file.iframe.style.display = "none";
+  }
+</script>
 </body>
 </html>

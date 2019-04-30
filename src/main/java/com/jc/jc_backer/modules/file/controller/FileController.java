@@ -75,10 +75,10 @@ public class FileController {
 
     @GetMapping("/download")
     public String downloadFile(HttpServletRequest request, HttpServletResponse response) {
-        String fileName = "1.jpg";// 文件名
+        String fileName = "Jc.docx";// 文件名
         if (fileName != null) {
             //设置文件路径
-            File file = new File("D://1.jpg");
+            File file = new File("F://Jc//Jc.docx");
             //File file = new File(realPath , fileName);
             if (file.exists()) {
                 response.setContentType("application/force-download");// 设置强制下载不打开
